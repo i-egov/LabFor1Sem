@@ -16,7 +16,7 @@ void ceaser_muttable(char* str, int n) {
 }
 
 char* ceaser_imuttable(const char* str, int n) {
-    char* res = malloc((strlen(str) + 1) * sizeof(char));
+    char* res = malloc((strlen(str) + sizeof(char)) * sizeof(char));
     strcpy(res, str);
     ceaser_muttable(res, n);
 	return res;
@@ -29,7 +29,7 @@ void xor_muttable(char* str, const char* key) {
 }
 
 char* xor_imuttable(const char* str, const char* key) {
-    char* res = malloc((strlen(str) + 1) * sizeof(char));
+    char* res = malloc((strlen(str) + sizeof(char)) * sizeof(char));
     strcpy(res, str);
     xor_muttable(res, key);
     return res;
