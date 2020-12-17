@@ -1,0 +1,56 @@
+CC=gcc
+
+DEBUG=
+CFLAGS=-Wall $(DEBUG) -std=c99 -I$(SRC_DIR)/ # -I$(STRING_UTIL_PATH_SRC)/ -I$(DYNAMIC_STRING_PATH_SRC)/ -I$(CRYPT_LIB_PATH_SRC)/
+
+SRC_DIR=src
+
+MODULES=stringUtil.a cryptLib.a dynamicString.a
+
+STRING_UTIL_PATH_SRC=$(SRC_DIR)/stringUtil
+STRING_UTIL_SRC=functionChecks.c functionSpaceDelete.c functionStrip.c functionUpperLower.c
+STRING_UTIL_OBJ=$(STRING_UTIL_SRC:%.c=%.o)
+
+DYNAMIC_STRING_PATH_SRC=$(SRC_DIR)/dynamicString
+DYNAMIC_STRING_SRC=core.c tools.c
+DYNAMIC_STRING_OBJ=$(DYNAMIC_STRING_SRC:%.c=%.o)
+
+CRYPT_LIB_PATH_SRC=$(SRC_DIR)/cryptLib
+CRYPT_LIB_SRC=CryptCoder.c cryptManager.c
+CRYPT_LIB_OBJ=$(CRYPT_LIB_SRC:%.c=%.o)
+
+.PHONY: all clean
+
+all: encoder
+
+encoder: mainEncoded.o $(MODULES)
+	$(CC) $(CFLAGS) mainEncoded.o -L. -Wl,--start-group $(MODULES:%.a=-l:%.a) -Wl,--end-group -o encoder
+
+mainEncoded.o: src/mainEncoded.c
+	$(CC) $(CFLAGS) $< -c -o $@
+
+$(CRYPT_LIB_OBJ): %.o: $(CRYPT_LIB_PATH_SRC)/%.c
+	$(CC) $(CFLAGS) $< -c -o $@
+
+$(DYNAMIC_STRING_OBJ): %.o: $(DYNAMIC_STRING_PATH_SRC)/%.c
+	$(CC) $(CFLAGS) $< -c -o $@
+
+$(STRING_UTIL_OBJ): %.o: $(STRING_UTIL_PATH_SRC)/%.c
+	$(CC) $(CFLAGS) $< -c -o $@
+
+stringUtil.a: $(STRING_UTIL_OBJ)
+	ar ruU $@ $^
+	ranlib $@
+
+dynamicString.a: $(DYNAMIC_STRING_OBJ)
+	ar ruU $@ $^
+	ranlib $@
+
+cryptLib.a: $(CRYPT_LIB_OBJ)
+	ar ruU $@ $^
+	ranlib $@
+
+clean:
+	rm -f *.o
+	rm -f *.a
+	rm -f encoder
