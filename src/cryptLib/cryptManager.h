@@ -5,10 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../stringUtil/functionChecks.h"
-#include "../stringUtil/functionStrip.h"
-#include "../dynamicString/core.h"
-#include "../stringUtil/functionUpperLower.h"
+#include "../stringTools.h"
 
 #include "CryptCoder.h"
 
