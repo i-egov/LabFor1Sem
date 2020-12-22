@@ -12,15 +12,15 @@ int main(int argc, char* argv[]) {
     char* key = argv[argc - 1];
     // We read the data required for encryption
     // For this we use the dynamic string package
-    char *string = parse_argv(argc, argv);
+    char *string = parseArgv(argc, argv);
 
 
     // Attribute check
     if (strcmp(method, "--caesar") == 0) {
-        caser_crypt(string, key, 0);
+        caserCryptManager(string, key, 0);
     }
     else if (strcmp(method, "--xor") == 0) {
-        xor_crypt(string, key, 0);
+        xorCryptManager(string, key, 0);
     }
     else {
         printf("Incorrect encoding method.\n");

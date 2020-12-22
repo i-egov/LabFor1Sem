@@ -1,46 +1,36 @@
+// Created by Egor Golikov and Egor Skorikov
+// Worked together, nobody copied
 #include "stringTools.h"
 
-int is_chars(const char* str) {
-    int result = 0;
-    while (*str) {
-        if (*str >= 'A' && *str <= 'Z' || 
-            *str >= 'a' && *str <= 'z' || 
-            *str == ' ') {
-            result = 1;
+int isChars(const char* str) {
+    for (int i = 0; i < strlen(str); ++i) {
+        if (isalpha(str[i])) {
+            continue;
+        } else {
+            return 0;
         }
-        else {
-            result = 0;
-            break;
-        }
-        ++str;
     }
-
-    return result;
+    return 1;
 }
 
-int is_numbers(const char* str) {
-    int result = 0;
-    while (*str) {
-        if (*str >= '0' && *str <= '9' || str[0] == '-') {
-            result = 1;
+int isNumbers(const char* str) {
+    for (int i = 0; i < strlen(str); ++i) {
+        if (isdigit(str[i])) {
+            continue;
+        } else {
+            return 0;
         }
-        else {
-            result = 0;
-            break;
-        }
-        ++str;
     }
-
-    return result;
+    return 1;
 }
 
-void space_delete_muttable(char* str) {
+void spaceDeleteMuttable(char* str) {
     int j = 0;
     for (int i = 0; i < strlen(str); ++i){
         if (str[i] == ' ' ||
-            str[i] >= 'a' && str[i] <= 'z' ||
-            str[i] >= 'A' && str[i] <= 'Z' ||
-            str[i] >= '0' && str[i] <= '9') {
+            (str[i] >= 'a' && str[i] <= 'z') ||
+            (str[i] >= 'A' && str[i] <= 'Z') ||
+            (str[i] >= '0' && str[i] <= '9')) {
             str[j] = str[i];
             ++j;
         }
@@ -48,15 +38,15 @@ void space_delete_muttable(char* str) {
     str[j] = '\0';
 }
 
-char* space_delete_imuttable(const char* str) {
+char* spaceDeleteImuttable(const char* str) {
     char* res = malloc((strlen(str) + 1) * sizeof(char));
     strcpy(res, str);
-    space_delete_muttable(res);
+    spaceDeleteMuttable(res);
 
     return res;
 }
 
-void strip_end_muttable(char* str) {
+void stripEndMuttable(char* str) {
     int i = 0;
     int j = strlen(str) - 1;
     while (str[i] == ' ') {
@@ -71,15 +61,15 @@ void strip_end_muttable(char* str) {
     str[j - 1] = '\0';
 }
 
-char* strip_end_imuttable(const char* str) {
+char* stripEndImuttable(const char* str) {
     char* res = malloc((strlen(str) + 1) * sizeof(char));
     strcpy(res, str);
-    strip_end_muttable(res);
+    stripEndMuttable(res);
 
     return res;
 }
 
-void strip_beginning_muttable(char* str) {
+void stripBeginningMuttable(char* str) {
     int i;
     int j;
 
@@ -90,38 +80,38 @@ void strip_beginning_muttable(char* str) {
     }
 }
 
-char* strip_beginning_imuttable(const char* str) {
+char* stripBeginningImuttable(const char* str) {
     char* res = malloc((strlen(str) + 1) * sizeof(char));
     strcpy(res, str);
-    strip_beginning_muttable(res);
+    stripBeginningMuttable(res);
 
     return res;
 }
 
-void string_upper_muttable(char* str) {
+void stringUpperMuttable(char* str) {
     for (int i = 0; str[i]; ++i) {
         str[i] = toupper(str[i]);
     }
 }
 
-char* string_upper_imuttable(const char* str) {
+char* stringUpperImuttable(const char* str) {
     char* res = malloc((strlen(str) + 1) * sizeof(char));
     strcpy(res, str);
-    string_upper_muttable(res);
+    stringUpperMuttable(res);
 
     return res;
 }
 
-void string_lowwer_muttable(char* str) {
+void stringLowwerMuttable(char* str) {
     for (int i = 0; str[i]; ++i) {
         str[i] = tolower(str[i]);
     }
 }
 
-char* string_lowwer_imuttable(const char* str) {
+char* stringLowwerImuttable(const char* str) {
     char* res = malloc((strlen(str) + 1) * sizeof(char));
     strcpy(res, str);
-    string_lowwer_muttable(res);
+    stringLowwerMuttable(res);
 
     return res;
 }

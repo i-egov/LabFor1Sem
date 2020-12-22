@@ -11,9 +11,9 @@
 
 
 // Обёртка для шифрования/дешифрования по алгоритму цезоря
-void caser_crypt(char *string, char *key, int encode);
+void caserCryptManager(char *string, char *key, int encode);
 
 // Обёртка для шифрования/дешифрования по алгоритму XOR
-void xor_crypt(char *string, char *key, int encoder);
+void xorCryptManager(char *string, char *key, int encoder);
 
 #endif

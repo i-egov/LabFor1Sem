@@ -1,6 +1,8 @@
+// Created by Egor Golikov and Egor Skorikov
+// Worked together, nobody copied
 #include "core.h"
 
-DynamicString* init_string() {
+DynamicString* initString() {
     DynamicString* result = (DynamicString*)malloc(sizeof(DynamicString));
     result->currentSize = 16;
     result->currentlyUsed = 0;
@@ -10,7 +12,7 @@ DynamicString* init_string() {
     return result;
 }
 
-void add_string(DynamicString* string, char symbol) {
+void addString(DynamicString* string, char symbol) {
     if (string->currentlyUsed > string->currentSize) {
         string->currentSize += 16;
         string->string =
@@ -23,7 +25,7 @@ void add_string(DynamicString* string, char symbol) {
     ++string->currentlyUsed;
 }
 
-void free_string(DynamicString* string) {
+void freeString(DynamicString* string) {
     free(string->string);
     free(string);
 }

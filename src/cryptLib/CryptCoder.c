@@ -1,6 +1,8 @@
+// Created by Egor Golikov and Egor Skorikov
+// Worked together, nobody copied
 #include "CryptCoder.h"
 
-void ceaser_muttable(char* str, int n) {
+void ceaserMuttable(char* str, int n) {
     while (*str) {
         if (*str >= 'a' && *str <= 'z') {
             *str += n;
@@ -15,22 +17,22 @@ void ceaser_muttable(char* str, int n) {
     }
 }
 
-char* ceaser_imuttable(const char* str, int n) {
+char* ceaserImuttable(const char* str, int n) {
     char* res = malloc((strlen(str) + 1) * sizeof(char));
     strcpy(res, str);
-    ceaser_muttable(res, n);
+    ceaserMuttable(res, n);
 	return res;
 }
 
-void xor_muttable(char* str, const char* key) {
+void xorMuttable(char* str, const char* key) {
     for (int i = 0; i <= strlen(str); ++i) {
         str[i] = str[i] ^ key[i % strlen(key)];
     }
 }
 
-char* xor_imuttable(const char* str, const char* key) {
+char* xorImuttable(const char* str, const char* key) {
     char* res = malloc((strlen(str) + 1) * sizeof(char));
     strcpy(res, str);
-    xor_muttable(res, key);
+    xorMuttable(res, key);
     return res;
 }

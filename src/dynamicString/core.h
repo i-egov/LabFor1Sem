@@ -11,8 +11,8 @@ typedef struct {
     long currentlyUsed;
 } DynamicString;
 
-DynamicString* init_string();
-void add_string(DynamicString* string, char symbol);
-void free_string(DynamicString* string);
+DynamicString* initString();
+void addString(DynamicString* string, char symbol);
+void freeString(DynamicString* string);
 
 #endif

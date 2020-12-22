@@ -6,15 +6,15 @@
 #include <stdlib.h>
 
 //Шифрование по методу цезаря с изменением строки
-void ceaser_muttable(char* str, int n) ;
+void ceaserMuttable(char* str, int n) ;
 
 //Шифрование по методу цезаря без изменением строки
-char* ceaser_imuttable(const char* str, int n);
+char* ceaserImuttable(const char* str, int n);
 
 //Шифрование по методу XOR с изменением строки
-void xor_muttable(char* str, const char* key);
+void xorMuttable(char* str, const char* key);
 
 //Шифрование по методу XOR без изменением строки
-char* xor_imuttable(const char* str, const char* key);
+char* xorImuttable(const char* str, const char* key);
 
 #endif

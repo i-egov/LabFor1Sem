@@ -8,6 +8,6 @@
 #include "../stringTools.h"
 
 // Processes argv, selects only the required strings for encryption
-char *parse_argv(int n, char* argv[]);
+char *parseArgv(int n, char **argv);
 
 #endif
