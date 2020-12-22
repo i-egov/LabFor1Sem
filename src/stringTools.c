@@ -26,7 +26,8 @@ int isNumbers(const char* str) {
 
 void spaceDeleteMuttable(char* str) {
     DynamicString *workString = initString();
-    for(i = j = 0; str[i] != '\0'; i++) {
+
+    for(int i = 0; i < (strlen(str) - 1); i++) {
         if (str[i] != ' ') {
             addString(workString, str[i]);
         }
