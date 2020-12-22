@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+#include "dynamicString/core.h"
+
 // Checking strings for letters
 int isChars(const char* str);
 

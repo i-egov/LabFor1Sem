@@ -25,17 +25,14 @@ int isNumbers(const char* str) {
 }
 
 void spaceDeleteMuttable(char* str) {
-    int j = 0;
-    for (int i = 0; i < strlen(str); ++i){
-        if (str[i] == ' ' ||
-            (str[i] >= 'a' && str[i] <= 'z') ||
-            (str[i] >= 'A' && str[i] <= 'Z') ||
-            (str[i] >= '0' && str[i] <= '9')) {
-            str[j] = str[i];
-            ++j;
+    DynamicString *workString = initString();
+    for(i = j = 0; str[i] != '\0'; i++) {
+        if (str[i] != ' ') {
+            addString(workString, str[i]);
         }
     }
-    str[j] = '\0';
+    str = (char*)realloc(str, workString->currentSize * sizeof(char));
+    strcpy(workString->string, str);
 }
 
 char* spaceDeleteImuttable(const char* str) {
