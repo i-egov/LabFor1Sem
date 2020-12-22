@@ -3,7 +3,9 @@
 int is_chars(const char* str) {
     int result = 0;
     while (*str) {
-        if (*str >= 'A' && *str <= 'Z' || *str >= 'a' && *str <= 'z' || *str == ' ') {
+        if (*str >= 'A' && *str <= 'Z' || 
+            *str >= 'a' && *str <= 'z' || 
+            *str == ' ') {
             result = 1;
         }
         else {

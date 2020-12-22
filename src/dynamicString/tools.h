@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "core.h"
-#include "../stringUtil/functionStrip.h"
+#include "../stringTools.h"
 
 // Processes argv, selects only the required strings for encryption
 char *parse_argv(int n, char* argv[]);
