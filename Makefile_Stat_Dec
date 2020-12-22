@@ -7,8 +7,8 @@ SRC_DIR=src
 
 MODULES=stringUtil.a cryptLib.a dynamicString.a
 
-STRING_UTIL_PATH_SRC=$(SRC_DIR)/stringUtil
-STRING_UTIL_SRC=functionChecks.c functionSpaceDelete.c functionStrip.c functionUpperLower.c
+STRING_UTIL_PATH_SRC=$(SRC_DIR)
+STRING_UTIL_SRC=stringTools.c
 STRING_UTIL_OBJ=$(STRING_UTIL_SRC:%.c=%.o)
 
 DYNAMIC_STRING_PATH_SRC=$(SRC_DIR)/dynamicString
