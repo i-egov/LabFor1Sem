@@ -34,6 +34,7 @@ void spaceDeleteMuttable(char* str) {
     }
     str = (char*)realloc(str, workString->currentSize * sizeof(char));
     strcpy(workString->string, str);
+    freeString(workString);
 }
 
 char* spaceDeleteImuttable(const char* str) {

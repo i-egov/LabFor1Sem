@@ -8,6 +8,7 @@ void caserCryptManager(char *string, char *key, int encode) {
     // Создаём копию строки для дальнейшего её изменения
     char* res = malloc((strlen(string) + 1) * sizeof(char));
     strcpy(res, string);
+    stripEndMuttable(string);
     // Проверяем если в Key содержаться буквы то завершаем процесс
     if (isNumbers(key) == 0) {
         printf("The key must be a number.\n");
@@ -28,6 +29,7 @@ void xorCryptManager(char *string, char *key, int encoder) {
     // Создаём копию строки для дальнейшего её изменения
     char* res = malloc((strlen(string) + 1) * sizeof(char));
     strcpy(res, string);
+    stripEndMuttable(string);
     // Проверяем содержаться ли в ключе что то кроме символов
     if (isChars(key) == 0) {
         printf("The key must be in English letters.\n");

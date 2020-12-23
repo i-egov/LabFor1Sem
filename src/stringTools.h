@@ -26,12 +26,6 @@ void stripEndMuttable(char* str);
 // Remove spaces at the end of a line without changing the pointer
 char* stripEndImuttable(const char* str);
 
-// Removing spaces at the beginning of a line with changing the pointer
-void stripBeginningMuttable(char* str);
-
-// Remove spaces at the beginning of a line without changing the pointer
-char* stripBeginningImuttable(const char* str);
-
 // Uppercase string with pointer change
 void stringUpperMuttable(char* str);
 
