@@ -7,8 +7,8 @@ SRC_DIR=src
 
 MODULES=stringUtil.so cryptLib.so dynamicString.so
 
-STRING_UTIL_PATH_SRC=$(SRC_DIR)/stringUtil
-STRING_UTIL_SRC=functionChecks.c functionSpaceDelete.c functionStrip.c functionUpperLower.c
+STRING_UTIL_PATH_SRC=$(SRC_DIR)
+STRING_UTIL_SRC=stringTools.c
 STRING_UTIL_OBJ=$(STRING_UTIL_SRC:%.c=%.o)
 
 DYNAMIC_STRING_PATH_SRC=$(SRC_DIR)/dynamicString
@@ -24,7 +24,7 @@ CRYPT_LIB_OBJ=$(CRYPT_LIB_SRC:%.c=%.o)
 all: encoder
 
 encoder: mainEncoded.o $(MODULES)
-	$(CC) $(CFLAGS) mainEncoded.o -L. -Wl,--start-group $(MODULES:%.a=-l:%.so) -Wl,--end-group -o encoder
+	$(CC) $(CFLAGS) mainEncoded.o -Wl,--start-group $(MODULES:%.so=./%.so) -Wl,--end-group -o encoder
 
 mainEncoded.o: src/mainEncoded.c
 	$(CC) $(CFLAGS) $< -c -o $@
