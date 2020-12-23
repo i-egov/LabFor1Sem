@@ -25,16 +25,14 @@ int isNumbers(const char* str) {
 }
 
 void spaceDeleteMuttable(char* str) {
-    DynamicString *workString = initString();
+    for (int i = 0, j = 0; str[i] != '\0'; ++i) {
 
-    for(int i = 0; i < (strlen(str) - 1); i++) {
         if (str[i] != ' ') {
-            addString(workString, str[i]);
+            str[j] = str[i];
+            ++j;
         }
+        str[j] = '\0';
     }
-    str = (char*)realloc(str, workString->currentSize * sizeof(char));
-    strcpy(workString->string, str);
-    freeString(workString);
 }
 
 char* spaceDeleteImuttable(const char* str) {
@@ -51,7 +49,7 @@ void stripEndMuttable(char* str) {
     int begin = 0;
 
     if(!size) {
-        return str;
+        return;
     }
 
     end = str + size - 1;
@@ -68,7 +66,6 @@ void stripEndMuttable(char* str) {
         str[i] = str[i + begin];
     }
 
-    return str;
 }
 
 char* stripEndImuttable(const char* str) {
