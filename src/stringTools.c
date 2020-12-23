@@ -45,43 +45,35 @@ char* spaceDeleteImuttable(const char* str) {
 }
 
 void stripEndMuttable(char* str) {
-    int i = 0;
-    int j = strlen(str) - 1;
-    while (str[i] == ' ') {
-        ++i;
+    size_t size = strlen(str);
+    char* end;
+    int begin = 0;
+
+    if(!size) {
+        return str;
     }
-    while (str[j] == ' ') {
-        ++j;
+
+    end = str + size - 1;
+    while(str[begin] == ' ') {
+        ++begin;
     }
-    for (int k = 0; k < j; ++k, ++i) {
-        str[k] = str[i];
+
+    while(end >= str && *end == ' ') {
+        --end;
     }
-    str[j - 1] = '\0';
+    *(end + 1) = '\0';
+
+    for (int i = 0; str[i] != '\0'; ++i) {
+        str[i] = str[i + begin];
+    }
+
+    return str;
 }
 
 char* stripEndImuttable(const char* str) {
     char* res = malloc((strlen(str) + 1) * sizeof(char));
     strcpy(res, str);
     stripEndMuttable(res);
-
-    return res;
-}
-
-void stripBeginningMuttable(char* str) {
-    int i;
-    int j;
-
-    for (i = j = 0; str[i] != '\0'; ++i) {
-        if (str[i] != ' ') {
-            str[++j] = str[i];
-        }
-    }
-}
-
-char* stripBeginningImuttable(const char* str) {
-    char* res = malloc((strlen(str) + 1) * sizeof(char));
-    strcpy(res, str);
-    stripBeginningMuttable(res);
 
     return res;
 }
