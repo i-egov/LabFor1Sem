@@ -2,9 +2,7 @@
 // Worked together, nobody copied
 #include "tools.h"
 
-DynamicString *parseArgv(int n, char **argv) {
-    DynamicString *string = initString();
-
+void parseArgv(DynamicString * string, int n, char **argv) {
     for (int i = 2; i < n - 1 ; ++i) {
         for (int j = 0; j < strlen(argv[i]); ++j) {
             addString(string, argv[i][j]);
@@ -12,6 +10,5 @@ DynamicString *parseArgv(int n, char **argv) {
         addString(string, *" ");
     }
     stripEndMuttable(string->string);
-    
-    return string;
+
 }
