@@ -1,7 +1,7 @@
 CC=gcc
 
 DEBUG=
-CFLAGS=-Wall $(DEBUG) -std=c99 -I$(SRC_DIR)/ # -I$(STRING_UTIL_PATH_SRC)/ -I$(DYNAMIC_STRING_PATH_SRC)/ -I$(CRYPT_LIB_PATH_SRC)/
+CFLAGS=-Wall $(DEBUG) -std=c99 -I$(SRC_DIR)/ -fPIC # -I$(STRING_UTIL_PATH_SRC)/ -I$(DYNAMIC_STRING_PATH_SRC)/ -I$(CRYPT_LIB_PATH_SRC)/
 
 SRC_DIR=src
 
@@ -39,13 +39,13 @@ $(STRING_UTIL_OBJ): %.o: $(STRING_UTIL_PATH_SRC)/%.c
 	$(CC) $(CFLAGS) $< -c -o $@
 
 stringUtil.so: $(STRING_UTIL_OBJ)
-	$(CC) $(CFLAGS) -shared -fPIC $^ -o $@
+	$(CC) $(CFLAGS) -shared $^ -o $@
 
 dynamicString.so: $(DYNAMIC_STRING_OBJ)
-	$(CC) $(CFLAGS) -shared -fPIC $^ -o $@
+	$(CC) $(CFLAGS) -shared $^ -o $@
 
 cryptLib.so: $(CRYPT_LIB_OBJ)
-	$(CC) $(CFLAGS) -shared -fPIC $^ -o $@
+	$(CC) $(CFLAGS) -shared $^ -o $@
 
 clean:
 	rm -f *.o
