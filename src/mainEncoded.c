@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
 
 
     switch (argc) {
-        case 0:
+        case 1:
             printf("We found that you did not transfer "
                    "the key and encryption method\n");
             printf("Please, enter method: --caesar or --xor: ");
@@ -25,7 +25,7 @@ int main(int argc, char* argv[]) {
             printf("Please enter appropriate key: ");
             readToString(key);
             break;
-        case 1:
+        case 2:
             printf("we noticed that you did not enter the encryption string and key!\n");
             strMethodSize = strlen(argv[1]);
             for (int strElement = 0; strElement < strMethodSize; ++ strElement) {
@@ -36,7 +36,7 @@ int main(int argc, char* argv[]) {
             printf("Please enter appropriate key: ");
             readToString(key);
             break;
-        case 2:
+        case 3:
             printf("We noticed that you did not enter the encryption key\n");
             strMethodSize = strlen(argv[1]);
             for (int strElement = 0; strElement < strMethodSize; ++ strElement) {
