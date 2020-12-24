@@ -13,6 +13,7 @@ typedef struct {
 
 DynamicString* initString();
 void addString(DynamicString* string, char symbol);
+void readToString(DynamicString* string);
 void freeString(DynamicString* string);
 
 #endif

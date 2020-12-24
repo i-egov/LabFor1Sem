@@ -3,7 +3,8 @@
 #include "stringTools.h"
 
 int isChars(const char* str) {
-    for (int i = 0; i < strlen(str); ++i) {
+    int strSize = strlen(str);
+    for (int i = 0; i < strSize; ++i) {
         if (isalpha(str[i])) {
             continue;
         } else {
@@ -14,7 +15,8 @@ int isChars(const char* str) {
 }
 
 int isNumbers(const char* str) {
-    for (int i = 0; i < strlen(str); ++i) {
+    int strSize = strlen(str);
+    for (int i = 0; i < strSize; ++i) {
         if (isdigit(str[i])) {
             continue;
         } else {
@@ -44,7 +46,7 @@ char* spaceDeleteImuttable(const char* str) {
 }
 
 void stripEndMuttable(char* str) {
-    size_t size = strlen(str);
+    int size = strlen(str);
     char* end;
     int begin = 0;
 

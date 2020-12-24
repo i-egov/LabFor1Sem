@@ -25,6 +25,16 @@ void addString(DynamicString* string, char symbol) {
     ++string->currentlyUsed;
 }
 
+void readToString(DynamicString* string) {
+    char newSymbol;
+    scanf(" %c", &newSymbol);
+
+    while (newSymbol != '\n') {
+        addString(string, newSymbol);
+        scanf("%c", &newSymbol);
+    }
+}
+
 void freeString(DynamicString* string) {
     free(string->string);
     free(string);
